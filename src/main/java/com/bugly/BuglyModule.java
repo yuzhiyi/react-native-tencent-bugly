@@ -1,8 +1,11 @@
-package com.react_native_recent_bugly;
+package com.bugly;
+
+import android.content.Context;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.tencent.bugly.Bugly;
 import com.tencent.bugly.beta.Beta;
 
 /**
@@ -24,5 +27,9 @@ public class BuglyModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void checkUpgrade() {
         Beta.checkUpgrade();
+    }
+
+    public static void init(Context context, String appId, boolean isDebug) {
+        Bugly.init(context, appId, isDebug);
     }
 }

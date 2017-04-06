@@ -1,15 +1,13 @@
 import {
-    NativeModules,
-    Platform,
-    DeviceEventEmitter
+    NativeModules
 } from 'react-native';
 
 const BuglyModule = NativeModules.BuglyModule;
 
-class Bugly {
+const Bugly = {
     checkUpgrade() {
         BuglyModule.checkUpgrade();
     }
-}
+};
 
-module.exports = BuglyModule;
+module.exports = Bugly;

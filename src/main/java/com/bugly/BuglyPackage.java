@@ -1,4 +1,4 @@
-package com.react_native_recent_bugly;
+package com.bugly;
 
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.JavaScriptModule;
@@ -18,7 +18,7 @@ public class BuglyPackage implements ReactPackage {
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
         return Arrays.<NativeModule>asList(
-                new BuglyModule(reactContext)
+                new com.bugly.BuglyModule(reactContext)
         );
     }
 
