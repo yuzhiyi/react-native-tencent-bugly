@@ -1,1 +1,1 @@
-# react-native-tecent-bugly
+# react-native-tencent-bugly
