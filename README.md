@@ -4,7 +4,7 @@ tencent bugly for react native
 
 ### Install 安装
 ```
-npm i git+https://gitlab.sys-in.com.cn/github/yuzhiyi/react-native-tencent-bugly --save
+npm i git+https://github.com/yuzhiyi/react-native-tencent-bugly.git --save
 ```
 
 ### Import 导入
@@ -30,18 +30,19 @@ react-native link react-native-tencent-bugly
 package <这里填写包名字>.utils;
 
 import android.support.v4.content.FileProvider;
-/**
- * Created by chenwenyu on 17-7-26.
- */
 
 public class BuglyFileProvider extends FileProvider {
 
 }
 ```
 
-在 AndroidManifest.xml 文件中，在和 package 同层的地方填写以下代码.
+在 AndroidManifest.xml 文件中，在和 package 同层的地方添加 xmlns:tools.
 ```
-xmlns:tools="http://schemas.android.com/tools"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.yunpingweb"
+    xmlns:tools="http://schemas.android.com/tools">
+</manifest>
+   
 ```
 
 在 application 标签内部(Activity 注册同层)填写以下代码.
@@ -65,7 +66,7 @@ import com.bugly.BuglyModule;
 ```
 在 MainApplication.java 的 onCreate 方法内填写以下代码.
 ```
-BuglyModule.init(getApplicationContext(), <这里填写在bug申请到的App ID>, false);
+BuglyModule.init(getApplicationContext(), <这里填写在 bugly 申请到的App ID>, false);
 ```
 
 如果不想在 debug 版本收到更新消息,可以在 BuglyModule.init 前加上 if(!BuildConfig.DEBUG).
@@ -84,3 +85,4 @@ Bugly.checkUpgrade();
 ```
 
 PR's welcome!
+
