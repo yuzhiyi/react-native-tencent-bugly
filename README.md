@@ -39,7 +39,7 @@ public class BuglyFileProvider extends FileProvider {
 在 AndroidManifest.xml 文件中，在和 package 同层的地方添加 xmlns:tools.
 ```
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.yunpingweb"
+    package="<这里填写包名>"
     xmlns:tools="http://schemas.android.com/tools">
 </manifest>
    
@@ -47,7 +47,7 @@ public class BuglyFileProvider extends FileProvider {
 
 在 application 标签内部(Activity 注册同层)填写以下代码.
 ```
-provider
+<provider
     android:name=".utils.BuglyFileProvider"
     android:authorities="<这里填写包名>.fileProvider"
     android:exported="false"
@@ -83,6 +83,24 @@ import Bugly from 'react-native-tencent-bugly';
 // 手动检测更新
 Bugly.checkUpgrade(); 
 ```
+
+### 常见问题处理
+
+1. Manifest merger failed
+```
+ Task :app:processDebugManifest FAILED
+xxxx/android/app/src/main/AndroidManifest.xml:14:7-34 Error:
+        Attribute application@allowBackup value=(false) from AndroidManifest.xml:14:7-34
+        is also present at [:react-native-tencent-bugly] AndroidManifest.xml:20:9-35 value=(true).
+        Suggestion: add 'tools:replace="android:allowBackup"' to <application> element at AndroidManifest.xml:10:5-39:19 to override.
+```
+
+解决方法：
+在 application 节点添加
+```
+<application tools:replace="android:allowBackup"  ......
+```
+
 
 PR's welcome!
 
